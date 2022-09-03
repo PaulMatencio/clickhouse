@@ -49,36 +49,35 @@ const CHBlock = `CREATE TABLE IF NOT EXISTS cblock (
 	ORDER BY (TimeStamp, Number);`
 
 type Block struct {
-	BodySize                 uint        `bson:"body_size" json:"body_size"`
-	CborHex                  interface{} `bson:"cbor_hex" json:"cbor_hex"`
-	Epoch                    uint        `bson:"epoch" json:"epoch"`
-	EpochSlot                uint        `bson:"epoch_slot" json:"epoch_slot"`
-	Era                      string      `bson:"era" json:"era"`
-	Hash                     string      `bson:"hash" json:"hash"`
-	IssuerVkey               string      `bson:"issuer_vkey" json:"issuer_vkey"`
-	Number                   uint        `bson:"number" json:"number"`
-	Slot                     uint        `bson:"slot" json:"slot"`
-	SlotLeader               string      `json:"slot_leader" bson:"slot_leader"`
-	TxCount                  uint        `bson:"tx_count" json:"tx_count"`
-	Fees                     int64       `bson:"fees" json:"fees"`
-	TotalOutput              int64       `bson:"total_output" json:"total_output"`
-	InputCount               uint        `bson:"input_count" json:"input_count"`
-	OutputCount              uint        `bson:"output_count" json:"output_count"`
-	MintCount                int64       `bson:"mint_count" json:"mint_count"`
-	MetaCount                uint        `bson:"metadata_count" json:"metadata_count"`
-	NativeWitnessesCount     uint        `bson:"native_witnesses_count" json:"native_witnesses_count"`
-	PlutusDatumCount         uint        `bson:"plutus_datum_count" json:"plutus_datum_count"`
-	PlutusRdmrCount          uint        `bson:"plutus_redeemer_count" json:"plutus_redeemer_count"`
-	PlutusWitnessesCount     uint        `bson:"plutus_witnesses_count" json:"plutus_witnesses_count"`
-	Cip25AssetCount          uint        `bson:"cip25_asset_count" json:"cip25_asset_count"`
-	Cip20Count               uint        `bson:"cip20_count" json:"cip20_count"`
-	PoolRegistrationCount    uint        `bson:"pool_registration_count" json:"pool_registration_count"`
-	PoolRetirementCount      uint        `bson:"pool_retirement_count" json:"pool_retirement_count"`
-	StakeDelegationCount     uint        `bson:"stake_delegation_count" json:"stake_delegation_count"`
-	StakeRegistrationCount   uint        `bson:"stake_registration_count" json:"stake_registration_count"`
-	StakeDeregistrationCount uint        `bson:"stake_deregistration_count" json:"stake_deregistration_count"`
-	Confirmations            uint        `json:"confirmations" bson:"confirmations"`
-	TimeStamp                time.Time   `json:"time_stamp" bson:"time_stamp"`
+	BodySize                 int       `bson:"body_size" json:"body_size"`
+	Epoch                    int       `bson:"epoch" json:"epoch"`
+	EpochSlot                int       `bson:"epoch_slot" json:"epoch_slot"`
+	Era                      string    `bson:"era" json:"era"`
+	Hash                     string    `bson:"hash" json:"hash"`
+	IssuerVkey               string    `bson:"issuer_vkey" json:"issuer_vkey"`
+	Number                   int       `bson:"number" json:"number"`
+	Slot                     int       `bson:"slot" json:"slot"`
+	SlotLeader               string    `json:"slot_leader" bson:"slot_leader"`
+	TxCount                  int       `bson:"tx_count" json:"tx_count"`
+	Fees                     int64     `bson:"fees" json:"fees"`
+	TotalOutput              int64     `bson:"total_output" json:"total_output"`
+	InputCount               int       `bson:"input_count" json:"input_count"`
+	OutputCount              int       `bson:"output_count" json:"output_count"`
+	MintCount                int64     `bson:"mint_count" json:"mint_count"`
+	MetaCount                int       `bson:"metadata_count" json:"metadata_count"`
+	NativeWitnessesCount     int       `bson:"native_witnesses_count" json:"native_witnesses_count"`
+	PlutusDatumCount         int       `bson:"plutus_datum_count" json:"plutus_datum_count"`
+	PlutusRdmrCount          int       `bson:"plutus_redeemer_count" json:"plutus_redeemer_count"`
+	PlutusWitnessesCount     int       `bson:"plutus_witnesses_count" json:"plutus_witnesses_count"`
+	Cip25AssetCount          int       `bson:"cip25_asset_count" json:"cip25_asset_count"`
+	Cip20Count               int       `bson:"cip20_count" json:"cip20_count"`
+	PoolRegistrationCount    int       `bson:"pool_registration_count" json:"pool_registration_count"`
+	PoolRetirementCount      int       `bson:"pool_retirement_count" json:"pool_retirement_count"`
+	StakeDelegationCount     int       `bson:"stake_delegation_count" json:"stake_delegation_count"`
+	StakeRegistrationCount   int       `bson:"stake_registration_count" json:"stake_registration_count"`
+	StakeDeregistrationCount int       `bson:"stake_deregistration_count" json:"stake_deregistration_count"`
+	Confirmations            int       `json:"confirmations" bson:"confirmations"`
+	Datetime                 time.Time `json:"datetime" bson:"datetime"`
 }
 
 func (cb *CBlock) Drop(conn clickhouse.Conn) (err error) {
