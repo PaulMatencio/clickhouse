@@ -49,6 +49,39 @@ const CHBlock = `CREATE TABLE IF NOT EXISTS cblock (
 	ORDER BY (TimeStamp, Number);`
 
 type Block struct {
+	BodySize                 uint32    `bson:"body_size" json:"body_size"`
+	Epoch                    uint32    `bson:"epoch" json:"epoch"`
+	EpochSlot                uint32    `bson:"epoch_slot" json:"epoch_slot"`
+	Era                      string    `bson:"era" json:"era"`
+	Hash                     string    `bson:"hash" json:"hash"`
+	IssuerVkey               string    `bson:"issuer_vkey" json:"issuer_vkey"`
+	Number                   uint64    `bson:"number" json:"number"`
+	Slot                     uint64    `bson:"slot" json:"slot"`
+	SlotLeader               string    `json:"slot_leader" bson:"slot_leader"`
+	TxCount                  uint32    `bson:"tx_count" json:"tx_count"`
+	Fees                     uint64    `bson:"fees" json:"fees"`
+	TotalOutput              uint64    `bson:"total_output" json:"total_output"`
+	InputCount               uint32    `bson:"input_count" json:"input_count"`
+	OutputCount              uint32    `bson:"output_count" json:"output_count"`
+	MintCount                uint64    `bson:"mint_count" json:"mint_count"`
+	MetaCount                uint32    `bson:"metadata_count" json:"metadata_count"`
+	NativeWitnessesCount     uint32    `bson:"native_witnesses_count" json:"native_witnesses_count"`
+	PlutusDatumCount         uint32    `bson:"plutus_datum_count" json:"plutus_datum_count"`
+	PlutusRdmrCount          uint32    `bson:"plutus_redeemer_count" json:"plutus_redeemer_count"`
+	PlutusWitnessesCount     uint32    `bson:"plutus_witnesses_count" json:"plutus_witnesses_count"`
+	Cip25AssetCount          uint32    `bson:"cip25_asset_count" json:"cip25_asset_count"`
+	Cip20Count               uint32    `bson:"cip20_count" json:"cip20_count"`
+	PoolRegistrationCount    uint32    `bson:"pool_registration_count" json:"pool_registration_count"`
+	PoolRetirementCount      uint32    `bson:"pool_retirement_count" json:"pool_retirement_count"`
+	StakeDelegationCount     uint32    `bson:"stake_delegation_count" json:"stake_delegation_count"`
+	StakeRegistrationCount   uint32    `bson:"stake_registration_count" json:"stake_registration_count"`
+	StakeDeregistrationCount uint32    `bson:"stake_deregistration_count" json:"stake_deregistration_count"`
+	Confirmations            uint32    `json:"confirmations" bson:"confirmations"`
+	Datetime                 time.Time `json:"datetime,omitempty" bson:"datetime,omitempty"`
+}
+
+/*
+type Block struct {
 	BodySize                 int       `bson:"body_size" json:"body_size"`
 	Epoch                    int       `bson:"epoch" json:"epoch"`
 	EpochSlot                int       `bson:"epoch_slot" json:"epoch_slot"`
@@ -77,8 +110,9 @@ type Block struct {
 	StakeRegistrationCount   int       `bson:"stake_registration_count" json:"stake_registration_count"`
 	StakeDeregistrationCount int       `bson:"stake_deregistration_count" json:"stake_deregistration_count"`
 	Confirmations            int       `json:"confirmations" bson:"confirmations"`
-	Datetime                 time.Time `json:"datetime" bson:"datetime"`
+	Datetime                 time.Time `json:"datetime,omitempty" bson:"datetime,omitempty"`
 }
+*/
 
 func (cb *CBlock) Drop(conn clickhouse.Conn) (err error) {
 	if cb.Table == "" {
